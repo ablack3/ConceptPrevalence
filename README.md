@@ -28,53 +28,29 @@ library('ConceptPrevalence')
 
 ## Add inputs for the site:
 
-dbms <- 'your_dbms'
+	dbms <- 'your_dbms'
+	user <- 'user'
+	password <- 'password'
+	server <- Sys.getenv('server')
+	port <- Sys.getenv('port')
+	cdmName <- 'your_cdm_name'
+	cdmDatabaseSchema <- 'your_cdm_schema
+	vocabDatabaseSchema <- 'your_vocab_schema'
+	resultDatabaseSchema <-"your_results_schema"
 
-user <- 'user'
-
-password <- 'password'
-
-server <- Sys.getenv('server')
-
-port <- Sys.getenv('port')
-
-
-cdmName <- 'your_cdm_name'
-
-cdmDatabaseSchema <- 'your_cdm_schema
-
-vocabDatabaseSchema <- 'your_vocab_schema'
-
-resultDatabaseSchema <-"your_results_schema"
-
-
-connectionDetails <- DatabaseConnector::createConnectionDetails(
-
-							      dbms = dbms,
-							      
-                                                              server = server,
-							      
-                                                              user = user,
-							      
-                                                              password = password,
-							      
-                                                              port = port
-							      
-							      )
+	connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = dbms,
+									server = server,
+									user = user,
+									password = password,
+									port = port)
                                                               
 ## Then run the following:
-ConceptPrevalence::calculate (
 
- 				 connectionDetails,	
-				 
-  				 cdmName,
-				 
-				 cdmDatabaseSchema,
-				 
- 				 vocabDatabaseSchema,
-				 
-				 resultDatabaseSchema
-				 )
+	ConceptPrevalence::calculate(connectionDetails,		 
+				     cdmName, 
+				     cdmDatabaseSchema, 
+				     vocabDatabaseSchema,
+				     resultDatabaseSchema)
 			 
 ## Output
 
